@@ -1,25 +1,59 @@
 {
   "name": "ele-curd",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.8.0",
+  "private": false,
+  "author": "liangdo",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib --name ele-curd --dest lib ./index.js",
     "lint": "vue-cli-service lint"
   },
+  "main": "lib/ele-curd.common.js",
+  "style": "lib/ele-curd.css",
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-ui": "^2.4.5",
     "vue": "^2.6.11"
   },
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
+    "vue-cli-plugin-element": "~1.0.1",
     "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "babel": {
+    "plugins": [
+      [
+        "component",
+        {
+          "libraryName": "element-ui",
+          "styleLibraryName": "theme-chalk"
+        }
+      ]
+    ]
   }
 }

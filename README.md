@@ -1,24 +1,2 @@
-# ele-curd
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## ele-curd
+一个基于element ui的增删改查组合插件，只需配置页面需要用到的接口和数据格式即可

@@ -1,24 +1,59 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <search-component :searchData.sync="searchData" @queryData="queryData" />
+    <table-component :tableData="tableData" :paginationData="paginationData" @currentPageChange="currentPageChange"></table-component>
+    <modify-component :modifyData.sync="modifyData"></modify-component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import './plugins/element';
+import SearchComponent from "./components/Search.vue";
+import TableComponent from "./components/Table.vue";
+import ModifyComponent from "./components/Modify.vue";
 
 export default {
-  name: 'App',
+  name: "vue-curd",
   components: {
-    HelloWorld,
+    SearchComponent,
+    TableComponent,
+    ModifyComponent
   },
+  props: {
+    configData: Object
+  },
+  data() {
+    return {
+      searchData: [],
+      tableData: [],
+      paginationData: {
+        pageNo: 1,
+        pageSize: 10,
+        total: 1000
+      },
+      modifyData: {}
+    };
+  },
+  methods: {
+    queryData() {
+      console.log("这里执行项目封装好的查询接口，更新tableData和paginationData");
+    },
+    currentPageChange() {
+      this.queryData();
+    }
+  },
+  created() {
+    this.searchData = this.configData.searchData;
+    this.tableData = this.configData.tableData;
+    this.modifyData = this.configData.modifyData;
+    this.queryData();
+  }
 };
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
